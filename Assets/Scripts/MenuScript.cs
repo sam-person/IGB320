@@ -8,7 +8,7 @@ public class MenuScript : MonoBehaviour
     public GameObject mainMenuCanvas;
     public GameObject homeCanvas;
     public GameObject shopMenu;
-    //public GameObject inventoryMenu;
+    public GameObject savingsMenu;
     public GameObject helpMenu;
 
     GameObject homeMenuButtonCanvas;
@@ -22,9 +22,10 @@ public class MenuScript : MonoBehaviour
     {
         homeMenuButtonCanvas = homeCanvas.transform.Find("homeMenu").gameObject;
         bagsMenu = homeCanvas.transform.Find("bagsMenu").gameObject;
+        savingsMenu = homeCanvas.transform.Find("savingsMenu").gameObject;
 
         homeSprite = homeCanvas.transform.Find("homeSprite").gameObject;
-        savingsSprite = homeCanvas.transform.Find("savingsSprite").gameObject;
+        //savingsSprite = homeCanvas.transform.Find("savingsSprite").gameObject;
     }
 
     // Update is called once per frame
@@ -73,12 +74,23 @@ public class MenuScript : MonoBehaviour
         helpMenu.SetActive(true);
     }
 
+    public void openSavings()
+    {
+        //remove home screen
+        homeSprite.SetActive(false);
+        homeMenuButtonCanvas.SetActive(false);
+
+        //activate savings screen
+        savingsMenu.SetActive(true);
+    }
+
     public void backHome()
     {
         //remove current screen
         shopMenu.SetActive(false);
         bagsMenu.SetActive(false);
         helpMenu.SetActive(false);
+        savingsMenu.SetActive(false);
 
         //activate home screen
         homeSprite.SetActive(true);
