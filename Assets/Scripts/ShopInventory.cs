@@ -9,6 +9,9 @@ public class ShopInventory : MonoBehaviour
     public GameObject[] furniture;
     public GameObject[] ownedFurniture;
 
+    public GameObject[] inventoryFurniture;
+    public GameObject[] allInventoryFurniture;
+
     public GameObject emptyPrefab;
 
     public int AirconPrice;
@@ -23,17 +26,23 @@ public class ShopInventory : MonoBehaviour
     public int TVPrice;
     public int ShelvesPrice;
 
+    //bool AirconOn;
+    //bool BarOn;
+    //bool BedOn;
+    //bool BlindsOn;
+    //bool CoffeeOn;
+    //bool ComputerOn;
+    //bool CouchOn;
+    //bool DiningTableOn;
+    //bool RugOn;
+    //bool TVOn;
+    //bool ShevlesOn;
+
 
     // Start is called before the first frame update
     void Start()
     {
         removeHomeObjets();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     //stop displaying objects when off screen
@@ -42,6 +51,11 @@ public class ShopInventory : MonoBehaviour
         foreach (GameObject roomObject in furniture)
         {
             roomObject.SetActive(false);
+        }
+
+        foreach (GameObject inventory in inventoryFurniture)
+        {
+            inventory.SetActive(false);
         }
     }
 
@@ -54,12 +68,22 @@ public class ShopInventory : MonoBehaviour
         }
     }
 
+    public void drawInventory()
+    {
+        foreach (GameObject ownedInvetory in inventoryFurniture)
+        {
+            ownedInvetory.SetActive(true);
+        }
+    }
+
     public void buyAircon()
     {
         if (money > AirconPrice && ownedFurniture[0] != furniture[0])
         {
             money -= AirconPrice;
             ownedFurniture[0] = furniture[0];
+
+            inventoryFurniture[0] = allInventoryFurniture[0];
         }
     }
 
@@ -69,6 +93,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= BarPrice;
             ownedFurniture[1] = furniture[1];
+
+            inventoryFurniture[1] = allInventoryFurniture[1];
         }
     }
 
@@ -78,6 +104,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= BedPrice;
             ownedFurniture[2] = furniture[2];
+
+            inventoryFurniture[2] = allInventoryFurniture[2];
         }
     }
 
@@ -87,6 +115,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= BlindsPrice;
             ownedFurniture[3] = furniture[3];
+
+            inventoryFurniture[3] = allInventoryFurniture[3];
         }
     }
 
@@ -96,6 +126,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= CoffeeTablePrice;
             ownedFurniture[4] = furniture[4];
+
+            inventoryFurniture[4] = allInventoryFurniture[4];
         }
     }
 
@@ -105,6 +137,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= ComputerPrice;
             ownedFurniture[5] = furniture[5];
+
+            inventoryFurniture[5] = allInventoryFurniture[5];
         }
     }
 
@@ -114,6 +148,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= CouchPrice;
             ownedFurniture[6] = furniture[6];
+
+            inventoryFurniture[6] = allInventoryFurniture[6];
         }
     }
 
@@ -123,6 +159,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= DiningTablePrice;
             ownedFurniture[7] = furniture[7];
+
+            inventoryFurniture[7] = allInventoryFurniture[7];
         }
     }
 
@@ -132,6 +170,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= RugPrice;
             ownedFurniture[8] = furniture[8];
+
+            inventoryFurniture[8] = allInventoryFurniture[8];
         }
     }
 
@@ -141,6 +181,8 @@ public class ShopInventory : MonoBehaviour
         {
             money -= TVPrice;
             ownedFurniture[9] = furniture[9];
+
+            inventoryFurniture[9] = allInventoryFurniture[9];
         }
     }
 
@@ -150,6 +192,24 @@ public class ShopInventory : MonoBehaviour
         {
             money -= ShelvesPrice;
             ownedFurniture[10] = furniture[10];
+
+            inventoryFurniture[10] = allInventoryFurniture[10];
         }
     }
+
+    //public void AirconOnOff()
+    //{
+    //    if (AirconOn == true)
+    //    {
+    //        ownedFurniture[0] = emptyPrefab;
+    //    }
+    //    else if (AirconOn == false)
+    //    {
+    //        ownedFurniture[0] = furniture[0];
+    //    }
+    //}
+
+
+
+
 }

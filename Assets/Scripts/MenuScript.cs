@@ -13,6 +13,9 @@ public class MenuScript : MonoBehaviour
     public GameObject helpMenu;
     public GameObject Room;
 
+    //points text
+    public GameObject pointsText;
+
     GameObject homeMenuButtonCanvas;
     GameObject bagsMenu;
 
@@ -32,6 +35,12 @@ public class MenuScript : MonoBehaviour
 
 
     public static bool isShopScreen1 = true;
+    public static bool isBagScreen1 = true;
+
+    public GameObject BagPage1;
+    public GameObject BagPage2;
+    public GameObject BagArrowRight;
+    public GameObject BagArrowLeft;
 
 
     // Start is called before the first frame update
@@ -63,6 +72,9 @@ public class MenuScript : MonoBehaviour
         homeCanvas.SetActive(true);
         homeMenuButtonCanvas.SetActive(true);
         Room.SetActive(true);
+
+        //activate points text
+        pointsText.SetActive(true);
     }
 
     public void openShop()
@@ -86,6 +98,42 @@ public class MenuScript : MonoBehaviour
 
         //activate bags screen
         bagsMenu.SetActive(true);
+
+        this.GetComponent<ShopInventory>().drawInventory();
+        if (isBagScreen1 == true)
+        {
+            BagPage1.SetActive(true);
+            BagPage2.SetActive(false);
+        }
+        else if (isBagScreen1 == false)
+        {
+            BagPage1.SetActive(false);
+            BagPage2.SetActive(true);
+        }
+    }
+
+    public void bagScreenArrows()
+    {
+        if (isBagScreen1 == true)
+        {
+            BagArrowRight.SetActive(false);
+            BagArrowLeft.SetActive(true);
+
+            BagPage1.SetActive(false);
+            BagPage2.SetActive(true);
+
+            isBagScreen1 = false;
+        }
+        else if (isBagScreen1 == false)
+        {
+            BagArrowRight.SetActive(true);
+            BagArrowLeft.SetActive(false);
+
+            BagPage1.SetActive(true);
+            BagPage2.SetActive(false);
+
+            isBagScreen1 = true;
+        }
     }
 
     public void openHelp()
@@ -97,6 +145,9 @@ public class MenuScript : MonoBehaviour
 
         //activate help screen
         helpMenu.SetActive(true);
+
+        //remove points
+        pointsText.SetActive(false);
     }
 
     public void openSavings()
@@ -108,6 +159,9 @@ public class MenuScript : MonoBehaviour
 
         //activate savings screen
         savingsMenu.SetActive(true);
+
+        //remove points
+        pointsText.SetActive(false);
     }
 
     public void backHome()
@@ -128,6 +182,9 @@ public class MenuScript : MonoBehaviour
 
         //draw owned objects
         this.GetComponent<ShopInventory>().drawHomeObjects();
+
+        //draw points
+        pointsText.SetActive(true);
     }
 
     public void ShopScreen()
