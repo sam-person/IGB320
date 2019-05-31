@@ -26,6 +26,9 @@ public class MenuScript : MonoBehaviour
     //furniture prefabs
     public GameObject shopPage1;
     public GameObject shopPage2;
+    public GameObject shopButtonsCanvas;
+    public GameObject shopPage1Buttons;
+    public GameObject shopPage2Buttons;
 
 
     public static bool isShopScreen1 = true;
@@ -71,6 +74,7 @@ public class MenuScript : MonoBehaviour
 
         //activate shop screen
         shopMenu.SetActive(true);
+        shopButtonsCanvas.SetActive(true);
     }
 
     public void openBags()
@@ -118,6 +122,12 @@ public class MenuScript : MonoBehaviour
         homeSprite.SetActive(true);
         homeMenuButtonCanvas.SetActive(true);
         Room.SetActive(true);
+
+        //remove shop buttons
+        shopButtonsCanvas.SetActive(false);
+
+        //draw owned objects
+        this.GetComponent<ShopInventory>().drawHomeObjects();
     }
 
     public void ShopScreen()
@@ -126,7 +136,9 @@ public class MenuScript : MonoBehaviour
         if (isShopScreen1 == true)
         {
             shopButtonLeft.SetActive(true);
+            shopPage1Buttons.SetActive(false);
             shopButtonRight.SetActive(false);
+            shopPage2Buttons.SetActive(true);
 
             shopPage1.SetActive(false);
             shopPage2.SetActive(true);
@@ -137,7 +149,9 @@ public class MenuScript : MonoBehaviour
         else if(isShopScreen1 == false)
         {
             shopButtonLeft.SetActive(false);
+            shopPage1Buttons.SetActive(true);
             shopButtonRight.SetActive(true);
+            shopPage2Buttons.SetActive(false);
 
             shopPage1.SetActive(true);
             shopPage2.SetActive(false);
